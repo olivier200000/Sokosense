@@ -1,0 +1,121 @@
+/* ==========================================================
+   SokoSense - Publications page and Admin area
+   Uses the colours and fonts defined in style.css
+   ========================================================== */
+
+/* The menu now has 7 items: switch to the mobile menu a little earlier */
+@media (max-width: 1100px) {
+  .nav-toggle { display: block; }
+  .nav-menu {
+    position: absolute; top: 74px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+    padding: .5rem 1.25rem 1.25rem; display: none;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu li a { display: block; padding: .8rem 0; }
+  .nav-menu .nav-cta { text-align: center; margin-top: .6rem; }
+}
+
+/* ---------- Tabs (News / Annual reports) ---------- */
+.pub-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+.pub-tabs a {
+  font-weight: 700; color: var(--navy); text-decoration: none;
+  border: 1.5px solid var(--line); border-radius: 999px; padding: .55rem 1.3rem;
+}
+.pub-tabs a span { font-weight: 500; color: var(--slate); margin-left: .3rem; }
+.pub-tabs a:hover { border-color: var(--navy); }
+.pub-tabs a.active { background: var(--navy); border-color: var(--navy); color: var(--paper); }
+.pub-tabs a.active span { color: var(--gold-soft); }
+.pub-empty { color: var(--slate); font-size: 1.1rem; }
+
+/* ---------- News list ---------- */
+.news-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; }
+.news-card a { display: block; text-decoration: none; color: var(--ink); }
+.news-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: var(--radius-sm); background: var(--mist); margin-bottom: 1rem; }
+.news-img-empty { display: grid; place-items: center; background: var(--navy); }
+.news-img-empty img { width: 70px; background: var(--paper); border-radius: 50%; padding: 6px; }
+.news-date { display: block; font: 700 .95rem var(--font-serif); color: var(--gold); margin-bottom: .3rem; }
+.news-title { font-size: 1.5rem; color: var(--navy); margin-bottom: .5rem; }
+.news-summary { color: var(--slate); margin-bottom: .6rem; }
+.news-more { font-weight: 700; color: var(--navy); border-bottom: 2px solid var(--gold); }
+.news-card a:hover .news-title { text-decoration: underline; text-decoration-color: var(--gold); }
+
+/* ---------- Single news article ---------- */
+.article { max-width: 760px; }
+.back-link { display: inline-block; font-weight: 700; color: var(--navy); text-decoration: none; margin-bottom: 1.8rem; }
+.back-link:hover { color: var(--gold); }
+.article-title { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--navy); margin-bottom: 1rem; }
+.article-summary { font: 400 1.35rem/1.45 var(--font-serif); color: var(--slate); margin-bottom: 2rem; }
+.article-img { width: 100%; border-radius: var(--radius-lg); margin-bottom: 2rem; }
+.article-body p { font-size: 1.12rem; line-height: 1.75; }
+
+/* ---------- Reports list ---------- */
+.report-list { list-style: none; margin: 0; padding: 0; }
+.report { display: grid; grid-template-columns: 100px 1fr auto; gap: 2rem; align-items: center; padding: 1.8rem 0; border-top: 1px solid var(--line); }
+.report:last-child { border-bottom: 1px solid var(--line); }
+.report-year { font: 700 2.2rem var(--font-serif); color: var(--gold); }
+.report-info h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: .3rem; }
+.report-info p { margin: 0 0 .3rem; color: var(--slate); }
+.report-meta { font-size: .92rem; color: var(--slate); margin: .3rem 0; }
+
+/* ---------- Admin area ---------- */
+.admin-narrow { max-width: 720px; }
+.admin-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.admin-actions { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.8rem; }
+.admin-form { background: var(--mist); padding: 2.2rem; border-radius: var(--radius-lg); }
+.admin-form input[type="file"] { background: var(--paper); }
+.admin-flash { background: #E4F3EA; color: #1D7A4A; border-left: 4px solid #1D7A4A; padding: .8rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-weight: 700; }
+.admin-flash p { margin: 0; }
+.admin-error { background: #FBEAEA; color: #B23B3B; padding: .8rem 1rem; border-radius: var(--radius-sm); font-weight: 700; }
+.admin-thumb { width: 220px; border-radius: var(--radius-sm); margin-bottom: .6rem; }
+.admin-check { display: flex !important; align-items: center; gap: .5rem; font-weight: 400 !important; margin-bottom: .8rem; }
+.admin-check input { width: auto; }
+.admin-table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.admin-table th { text-align: left; background: var(--navy); color: var(--paper); padding: .7rem .9rem; white-space: nowrap; }
+.admin-table td { padding: .75rem .9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.admin-table tbody tr:nth-child(even) { background: var(--mist); }
+.admin-msg { min-width: 280px; white-space: pre-wrap; }
+.admin-row-actions { display: flex; gap: 1rem; align-items: center; white-space: nowrap; }
+.admin-row-actions form { margin: 0; }
+button.btn-outline { background: none; }
+.link-danger { background: none; border: 0; padding: 0; font: inherit; color: #B23B3B; text-decoration: underline; cursor: pointer; }
+
+@media (max-width: 960px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .news-grid { grid-template-columns: 1fr; }
+  .report { grid-template-columns: 1fr; gap: .6rem; }
+  .admin-form { padding: 1.4rem; }
+}
+
+/* ---------- News articles with a PDF ---------- */
+.pdf-tag { display: inline-block; vertical-align: middle; background: var(--gold-soft); color: #7A5617; font-weight: 700; font-size: .75rem; letter-spacing: .05em; padding: .1rem .5rem; border-radius: 4px; margin-left: .5rem; }
+.news-date + .pdf-tag { margin: 0 0 .3rem; }
+.news-card .news-date { display: inline-block; margin-right: .5rem; }
+.article-wide { max-width: 980px; }
+
+/* Three reading options: read here, new tab, download */
+.pdf-box { margin-top: 2rem; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+.pdf-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem 1.5rem; flex-wrap: wrap; background: var(--mist); padding: 1.2rem 1.4rem; }
+.pdf-label { font: 700 1.2rem var(--font-serif); color: var(--navy); }
+.pdf-size { display: block; font: 500 .9rem var(--font-sans); color: var(--slate); margin-top: .15rem; }
+.pdf-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.pdf-actions .btn { padding: .65rem 1.2rem; font-size: .95rem; }
+.pdf-actions .btn-outline { background: var(--paper); }
+.pdf-viewer-wrap { border-top: 1px solid var(--line); }
+.pdf-viewer { display: block; width: 100%; height: 82vh; min-height: 520px; border: 0; background: #525659; }
+.pdf-help { font-size: .92rem; color: var(--slate); margin: 0; padding: .8rem 1.4rem; }
+
+/* Reports list: Read + Download */
+.report-actions { display: flex; align-items: center; gap: 1.2rem; }
+.report-download { font-weight: 700; color: var(--navy); }
+
+@media (max-width: 700px) {
+  .pdf-actions { width: 100%; }
+  .pdf-actions .btn { flex: 1 1 100%; text-align: center; }
+  .pdf-viewer { height: 70vh; min-height: 420px; }
+  .report-actions { flex-wrap: wrap; }
+}
