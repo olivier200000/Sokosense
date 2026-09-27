@@ -1,4 +1,4 @@
-# SokoSense website (version 3)
+# SokoSense website
 
 Multi-page business website built with **Python (Flask)** and **JavaScript**.
 Content is taken from sokosense.dev.
