@@ -1,1 +1,328 @@
-
+{
+  "company": {
+    "name": "SokoSense",
+    "tagline": "AI intelligence for the marketplace",
+    "headline": "Every day, small business owners lose money from lack of data",
+    "intro": "SokoSense is a WhatsApp-powered AI that helps any shop owner understand and grow their business. No app to download, no training needed.",
+    "website": "https://sokosense.dev",
+    "demo_url": "https://sokosense.dev/#demo",
+    "email": "sokosense@gmail.com",
+    "phone": "+20798596611",
+    "address": "Kigali, Rwanda and Douala, Cameroon",
+    "socials": [
+      {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/sokosense_rwanda?stkn=MWhxMmJzdWVyeGplaA=="
+      }
+    ]
+  },
+  "images": {
+    "hero": "/static/img/site/rural-kigali-rwanda.jpeg",
+    "hero_caption": "Kigali open-air market, morning rush",
+    "problem": "/static/img/site/central-market-douala-cameroon.jpeg",
+    "solution": "/static/img/site/small-scale-businesses-in-buea-cameroon.jpeg",
+    "map": "/static/img/site/africa-map.jpg",
+    "field": "/static/img/site/owner-explaining-how-sokosense-works-from-whatsapp.jpeg"
+  },
+  "hero_chat": [
+    {
+      "from": "user",
+      "text": "Sold 12 soaps today. Added flour and sugar stock."
+    },
+    {
+      "from": "bot",
+      "text": "You are up 18% vs last Tuesday. Soaps are still your #1 margin item."
+    },
+    {
+      "from": "bot",
+      "text": "Alert: inventory spend is rising faster than sales this week. Want a restock plan?"
+    }
+  ],
+  "opportunity": [
+    {
+      "value": "220,000+",
+      "label": "registered SMEs in Rwanda, our pilot market"
+    },
+    {
+      "value": "250,000+",
+      "label": "informal traders in Cameroon, our phase 2 market"
+    },
+    {
+      "value": "12M+",
+      "label": "addressable SMEs across Africa"
+    },
+    {
+      "value": "$2.9T",
+      "label": "African informal economy"
+    }
+  ],
+  "problem": {
+    "title": "The blind spot killing African SMEs",
+    "summary": "50% of SMEs in Rwanda and Cameroon close within five years. Not from lack of effort, but from lack of data.",
+    "detail": "Many owners run their business without daily visibility of inventory, pricing and cash flow. That creates a predictable survival gap in the first five years.",
+    "source": "World Bank enterprise and regional SME trend data, 2024",
+    "pains": [
+      {
+        "title": "No inventory insight",
+        "text": "Owners do not know what is selling until shelves are empty.",
+        "quote": "I did not know my flour stock was out until a customer told me.",
+        "who": "Mama Claudine, Kigali"
+      },
+      {
+        "title": "Guesswork pricing",
+        "text": "No data on market prices leads to lost margins every day.",
+        "quote": "I set prices by instinct and sometimes sell below my own costs.",
+        "who": "Yvette, Nyabugogo"
+      },
+      {
+        "title": "Cash flow blindness",
+        "text": "Cash flow crises arrive without warning.",
+        "quote": "At month end, I cannot explain where my money disappeared.",
+        "who": "Eric, Douala"
+      }
+    ]
+  },
+  "markets": {
+    "text": [
+      "SokoSense is built for the realities of African markets. From neighbourhood shops in Kigali to busy trading centres in Douala, our tools help small business owners make better decisions with the data they already have.",
+      "Starting in Rwanda and Cameroon, SokoSense is designed to grow across Africa, giving entrepreneurs simple access to inventory insights, pricing intelligence and cash-flow guidance through familiar tools like WhatsApp."
+    ],
+    "countries": [
+      {
+        "flag": "🇷🇼",
+        "name": "Rwanda",
+        "stage": "Pilot market"
+      },
+      {
+        "flag": "🇨🇲",
+        "name": "Cameroon",
+        "stage": "Phase 2"
+      }
+    ]
+  },
+  "gallery": [
+    {
+      "src": "/static/img/site/small-business-owner-buea-cameroon.jpeg",
+      "caption": "Small business owner, Buea, Cameroon"
+    },
+    {
+      "src": "/static/img/site/small-scale-businesses-in-kigali-rwanda.jpeg",
+      "caption": "Small scale businesses in Kigali, Rwanda"
+    },
+    {
+      "src": "/static/img/site/central-market-douala-cameroon.jpeg",
+      "caption": "Central Market, Douala, Cameroon"
+    },
+    {
+      "src": "/static/img/site/small-creative-business-in-kigali-rwanda.jpeg",
+      "caption": "Small creative business in Kigali, Rwanda"
+    },
+    {
+      "src": "/static/img/site/meduim-size-business-owner-oic-market-buea-cameroon.jpeg",
+      "caption": "Business owner, OIC Market, Buea, Cameroon"
+    },
+    {
+      "src": "/static/img/site/small-scale-businesse-at-mboppi-douala-cameroon.jpeg",
+      "caption": "Small scale businesses at Mboppi, Douala, Cameroon"
+    }
+  ],
+  "features": [
+    {
+      "title": "WhatsApp AI",
+      "text": "Text or voice your daily sales in French, English or Kinyarwanda.",
+      "example": "Logged. You sold most between 6 and 8 PM."
+    },
+    {
+      "title": "Cash flow alerts",
+      "text": "Real-time insights, such as: you spent 40% more than you earned this week.",
+      "example": "Expenses are 40% above sales. Reduce low-turnover stock."
+    },
+    {
+      "title": "Smart suggestions",
+      "text": "Restock top items, find your best sales hours and cut costs.",
+      "example": "Restock soaps before Friday. Demand spikes 24% on weekends."
+    },
+    {
+      "title": "Competitor pricing radar",
+      "text": "Market price comparisons, updated continuously.",
+      "example": "Your price is above market average. Suggested adjustment ready."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Text or voice",
+      "text": "Send \"Sold 12 soaps today\" on WhatsApp."
+    },
+    {
+      "title": "AI processes",
+      "text": "SokoSense updates inventory, compares prices and forecasts."
+    },
+    {
+      "title": "Get insights",
+      "text": "Receive plain-language alerts and weekly reports."
+    }
+  ],
+  "languages": [
+    {
+      "flag": "🇬🇧",
+      "name": "English",
+      "example": "Sold 12 soaps today."
+    },
+    {
+      "flag": "🇫🇷",
+      "name": "Français",
+      "example": "J'ai vendu 12 savons aujourd'hui."
+    },
+    {
+      "flag": "🇷🇼",
+      "name": "Kinyarwanda",
+      "example": "Uyu munsi nagurishije amasabune 12."
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Freemium WhatsApp",
+      "price": "$0",
+      "local": "0 RWF / 0 CFA",
+      "text": "Basic logging and daily summaries."
+    },
+    {
+      "name": "SokoSense Pro",
+      "price": "$5–8/month",
+      "local": "About 7,000–11,200 RWF or 3,000–4,800 CFA per month",
+      "text": "Full AI suite, pricing radar and cash flow intelligence.",
+      "featured": true
+    },
+    {
+      "name": "SokoSense Business",
+      "price": "$12–15/month",
+      "local": "About 16,800–21,000 RWF or 7,200–9,000 CFA per month",
+      "text": "Multiple locations, team access and API capabilities."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do I need a smartphone?",
+      "a": "No. SokoSense works through WhatsApp on any phone that supports messaging. A smartphone improves the experience, but it is not required for basic use."
+    },
+    {
+      "q": "What if I have no internet?",
+      "a": "You can prepare your sales notes offline and send them once connected. SokoSense is designed for low-bandwidth, intermittent connections."
+    },
+    {
+      "q": "Can I use it in French?",
+      "a": "Yes. SokoSense supports French, English and Kinyarwanda for both text and voice."
+    },
+    {
+      "q": "Are prices charged in local currency?",
+      "a": "Yes. We show local equivalents in RWF and CFA and can support local payment channels during rollout."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Mary K.",
+      "role": "Produce trader, Kigali",
+      "quote": "Before SokoSense, I guessed what to restock. Now I know my best-selling items every day."
+    },
+    {
+      "name": "Jean P.",
+      "role": "Neighbourhood shop owner, Rubavu",
+      "quote": "Cash alerts helped me stop overbuying stock. I finally understand where my money goes each week."
+    },
+    {
+      "name": "Aline N.",
+      "role": "Wholesale trader, Douala",
+      "quote": "The price radar showed me where I was too high. After adjusting, customer repeat purchases increased."
+    }
+  ],
+  "testimonials_note": "Collected during 2026 pilot conversations. Names are partially anonymised.",
+  "awards": [
+    {
+      "year": 2026,
+      "title": "Recognised at the Product @ ASU Pitch Competition",
+      "organizer": "Arizona State University",
+      "description": "SokoSense was recognised for its WhatsApp-based approach to business intelligence for African SMEs."
+    }
+  ],
+  "milestones": [
+    "Functional MVP available for live demo.",
+    "Primary field research completed in Rwanda and Cameroon.",
+    "Early trader feedback from the Kigali and Douala pilots is strong."
+  ],
+  "events": [
+    {
+      "year": 2026,
+      "date": "",
+      "title": "Product @ ASU Pitch Competition",
+      "location": "Arizona State University",
+      "role": "Pitching team",
+      "description": "Pitched SokoSense and was recognised by the competition.",
+      "image": ""
+    },
+    {
+      "year": 2026,
+      "date": "",
+      "title": "Kigali and Douala trader pilots",
+      "location": "Kigali, Rwanda and Douala, Cameroon",
+      "role": "Pilot",
+      "description": "Ran pilot conversations with traders to test the MVP and gather feedback on inventory, pricing and cash-flow features.",
+      "image": "/static/img/site/small-scale-businesses-in-kigali.jpeg"
+    },
+    {
+      "year": 2026,
+      "date": "",
+      "title": "In-store field session in Kigali",
+      "location": "Kigali, Rwanda",
+      "role": "Field demo",
+      "description": "Introduced SokoSense to a shop owner in-store and showed how it works through WhatsApp.",
+      "image": "/static/img/site/owner-explaining-how-sokosense-works-from-whatsapp.jpeg"
+    },
+    {
+      "year": 2025,
+      "date": "",
+      "title": "Market field research",
+      "location": "Kigali, Rwanda and Douala, Cameroon",
+      "role": "Research",
+      "description": "Interviewed more than 45 traders to shape SokoSense around real daily market operations.",
+      "image": "/static/img/site/open-air-small-scale-businesses-in-douala-cameroon.jpeg"
+    }
+  ],
+  "team": [
+    {
+      "name": "Bate Tabenyang Alaine",
+      "role": "Founder & Chairperson",
+      "bio": "",
+      "photo": "/static/img/team/bate-tabenyang-alaine.jpg",
+      "linkedin": "https://www.linkedin.com/in/bate-tabenyang-alaine/"
+    },
+    {
+      "name": "Emmanuel Niyonzima",
+      "role": "Co-Founder & Managing Director",
+      "bio": "",
+      "photo": "/static/img/team/emmanuel-niyonzima.jpg",
+      "linkedin": "https://www.linkedin.com/in/emmanuel-niyonzima-1108b4318/"
+    },
+    {
+      "name": "Olivier Dusengimana",
+      "role": "Co-Founder & Chief Technology Officer",
+      "bio": "",
+      "photo": "/static/img/team/olivier-dusengimana.jpg",
+      "linkedin": "https://www.linkedin.com/in/olivier-dusengimana-8849a33a8/"
+    },
+    {
+      "name": "Aliane Uwase",
+      "role": "Co-Founder & Marketing manager",
+      "bio": "",
+      "photo": "/static/img/team/aliane-uwase.jpg",
+      "linkedin": ""
+    },
+    {
+      "name": "Dative Akimana",
+      "role": "Co-Founder & Chief Financial Officer",
+      "bio": "",
+      "photo": "/static/img/team/dative-akimana.jpg",
+      "photo_zoom": 0.5,
+      "linkedin": "https://www.linkedin.com/in/dative-akimana-a53009201/"
+    }
+  ]
+}
