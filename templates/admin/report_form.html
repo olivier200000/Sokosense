@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block lead %}Upload a yearly report as a PDF. It appears on the Publications page as soon as you save.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container admin-narrow">
+    <a class="back-link" href="{{ url_for('admin_dashboard', tab='reports') }}">‹ Back to admin</a>
+    {% include "admin/_flash.html" %}
+    <form class="admin-form" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <div class="field {% if errors.title %}has-error{% endif %}">
+        <label for="title">Title</label>
+        <input id="title" name="title" value="{{ form.title or '' }}" placeholder="Annual Report 2026" maxlength="200" required>
+        {% if errors.title %}<p class="field-error">{{ errors.title }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.year %}has-error{% endif %}">
+        <label for="year">Year</label>
+        <input id="year" name="year" type="number" min="2000" max="2100" value="{{ form.year or '' }}" required>
+        {% if errors.year %}<p class="field-error">{{ errors.year }}</p>{% endif %}
+      </div>
+      <div class="field">
+        <label for="description">Description <span class="optional">(optional)</span></label>
+        <textarea id="description" name="description" rows="3" maxlength="600">{{ form.description or '' }}</textarea>
+      </div>
+      <div class="field {% if errors.file %}has-error{% endif %}">
+        <label for="file">PDF file {% if item %}<span class="optional">(only choose a file to replace the current one)</span>{% endif %}</label>
+        {% if item %}<p class="report-meta">Current file: <a href="{{ url_for('report_download', report_id=item.id) }}" target="_blank" rel="noopener">PDF, {{ item.file_size|file_size }}</a></p>{% endif %}
+        <input id="file" name="file" type="file" accept=".pdf,application/pdf" {% if not item %}required{% endif %}>
+        <p class="report-meta">Maximum size: {{ max_mb }} MB.</p>
+        {% if errors.file %}<p class="field-error">{{ errors.file }}</p>{% endif %}
+      </div>
+      <button class="btn btn-navy" type="submit">{{ "Save changes" if item else "Publish report" }}</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

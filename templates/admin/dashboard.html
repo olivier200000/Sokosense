@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block lead %}Manage news, yearly reports and contact messages.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="admin-top">
+      <nav class="pub-tabs" aria-label="Admin sections">
+        <a href="{{ url_for('admin_dashboard', tab='news') }}" {% if tab == 'news' %}class="active"{% endif %}>News <span>{{ news|length }}</span></a>
+        <a href="{{ url_for('admin_dashboard', tab='reports') }}" {% if tab == 'reports' %}class="active"{% endif %}>Reports <span>{{ reports|length }}</span></a>
+        <a href="{{ url_for('admin_dashboard', tab='messages') }}" {% if tab == 'messages' %}class="active"{% endif %}>Messages <span>{{ messages|length }}</span></a>
+      </nav>
+      <form method="post" action="{{ url_for('admin_logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="btn btn-outline" type="submit">Log out</button>
+      </form>
+    </div>
+
+    {% include "admin/_flash.html" %}
+
+    {% if tab == 'news' %}
+      <div class="admin-actions">
+        <a class="btn btn-gold" href="{{ url_for('admin_news_form') }}">Add news</a>
+        <a href="{{ url_for('publications', tab='news') }}" target="_blank" rel="noopener">View public page</a>
+      </div>
+      {% if news %}
+      <div class="admin-table-wrap"><table class="admin-table">
+        <thead><tr><th>Date</th><th>Title</th><th>Actions</th></tr></thead>
+        <tbody>
+        {% for n in news %}
+          <tr>
+            <td>{{ n.published_on|nice_date }}</td>
+            <td><a href="{{ url_for('news_article', news_id=n.id) }}" target="_blank" rel="noopener">{{ n.title }}</a>{% if n.pdf %} <span class="pdf-tag">PDF</span>{% endif %}</td>
+            <td><div class="admin-row-actions">
+              <a href="{{ url_for('admin_news_form', news_id=n.id) }}">Edit</a>
+              <form method="post" action="{{ url_for('admin_news_delete', news_id=n.id) }}" data-confirm="Delete this news article? This cannot be undone.">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="link-danger">Delete</button>
+              </form>
+            </div></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table></div>
+      {% else %}<p class="pub-empty">No news yet. Click "Add news" to publish the first article.</p>{% endif %}
+
+    {% elif tab == 'reports' %}
+      <div class="admin-actions">
+        <a class="btn btn-gold" href="{{ url_for('admin_report_form') }}">Upload report</a>
+        <a href="{{ url_for('publications', tab='reports') }}" target="_blank" rel="noopener">View public page</a>
+      </div>
+      {% if reports %}
+      <div class="admin-table-wrap"><table class="admin-table">
+        <thead><tr><th>Year</th><th>Title</th><th>File</th><th>Actions</th></tr></thead>
+        <tbody>
+        {% for r in reports %}
+          <tr>
+            <td>{{ r.year }}</td>
+            <td>{{ r.title }}</td>
+            <td><a href="{{ url_for('report_download', report_id=r.id) }}" target="_blank" rel="noopener">PDF, {{ r.file_size|file_size }}</a></td>
+            <td><div class="admin-row-actions">
+              <a href="{{ url_for('admin_report_form', report_id=r.id) }}">Edit</a>
+              <form method="post" action="{{ url_for('admin_report_delete', report_id=r.id) }}" data-confirm="Delete this report and its PDF? This cannot be undone.">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="link-danger">Delete</button>
+              </form>
+            </div></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table></div>
+      {% else %}<p class="pub-empty">No reports yet. Click "Upload report" to add the first one.</p>{% endif %}
+
+    {% else %}
+      {% if messages %}
+      <div class="admin-table-wrap"><table class="admin-table">
+        <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Business</th><th>Message</th><th>Email status</th></tr></thead>
+        <tbody>
+        {% for m in messages %}
+          <tr>
+            <td>{{ m.created_at|nice_date }}</td>
+            <td>{{ m.name }}</td>
+            <td><a href="mailto:{{ m.email }}">{{ m.email }}</a></td>
+            <td>{{ m.business or '-' }}</td>
+            <td class="admin-msg">{{ m.message }}</td>
+            <td>{{ m.email_status }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table></div>
+      {% else %}<p class="pub-empty">No contact messages yet.</p>{% endif %}
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+{% block extra %}{% include "admin/_confirm.html" %}{% endblock %}

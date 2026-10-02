@@ -1,1 +1,20 @@
-
+{% extends "base.html" %}
+{% block lead %}For the SokoSense team only.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container admin-narrow">
+    <form class="admin-form" method="post">
+      {% if error %}<p class="admin-error" role="alert">{{ error }}</p>{% endif %}
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required autofocus>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-navy" type="submit">Log in</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

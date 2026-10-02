@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block lead %}Write a news article, attach it as a PDF, or both. It appears on the Publications page as soon as you save.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container admin-narrow">
+    <a class="back-link" href="{{ url_for('admin_dashboard', tab='news') }}">‹ Back to admin</a>
+    {% include "admin/_flash.html" %}
+    <form class="admin-form" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <div class="field {% if errors.title %}has-error{% endif %}">
+        <label for="title">Title</label>
+        <input id="title" name="title" value="{{ form.title or '' }}" maxlength="200" required>
+        {% if errors.title %}<p class="field-error">{{ errors.title }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.published_on %}has-error{% endif %}">
+        <label for="published_on">Date</label>
+        <input id="published_on" name="published_on" type="date" value="{{ form.published_on or '' }}" required>
+        {% if errors.published_on %}<p class="field-error">{{ errors.published_on }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.summary %}has-error{% endif %}">
+        <label for="summary">Short summary <span class="optional">(1-2 sentences, shown on the news list)</span></label>
+        <textarea id="summary" name="summary" rows="2" maxlength="400" required>{{ form.summary or '' }}</textarea>
+        {% if errors.summary %}<p class="field-error">{{ errors.summary }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.body %}has-error{% endif %}">
+        <label for="body">Full article <span class="optional">(optional if you attach a PDF; leave an empty line between paragraphs)</span></label>
+        <textarea id="body" name="body" rows="12">{{ form.body or '' }}</textarea>
+        {% if errors.body %}<p class="field-error">{{ errors.body }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.image %}has-error{% endif %}">
+        <label for="image">Photo <span class="optional">(optional: JPG, PNG or WEBP)</span></label>
+        {% if item and item.image %}
+          <img class="admin-thumb" src="{{ url_for('news_image', filename=item.image) }}" alt="Current photo">
+          <label class="admin-check"><input type="checkbox" name="remove_image" value="1"> Remove this photo</label>
+        {% endif %}
+        <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.webp">
+        {% if errors.image %}<p class="field-error">{{ errors.image }}</p>{% endif %}
+      </div>
+      <div class="field {% if errors.pdf %}has-error{% endif %}">
+        <label for="pdf">Article as PDF <span class="optional">(optional)</span></label>
+        {% if item and item.pdf %}
+          <p class="report-meta">Current PDF: <a href="{{ url_for('news_pdf', news_id=item.id) }}" target="_blank" rel="noopener">PDF, {{ item.pdf_size|file_size }}</a></p>
+          <label class="admin-check"><input type="checkbox" name="remove_pdf" value="1"> Remove this PDF</label>
+        {% endif %}
+        <input id="pdf" name="pdf" type="file" accept=".pdf,application/pdf">
+        <p class="report-meta">{% if item and item.pdf %}Choose a file only to replace the current PDF. {% endif %}Maximum size: {{ max_mb }} MB.</p>
+        {% if errors.pdf %}<p class="field-error">{{ errors.pdf }}</p>{% endif %}
+      </div>
+      <button class="btn btn-navy" type="submit">{{ "Save changes" if item else "Publish news" }}</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
