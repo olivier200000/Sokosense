@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block lead %}A simple WhatsApp-powered AI that helps any shop owner, even without a formal education.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">What SokoSense does</h2>
+    <ul class="features">
+      {% for f in c.features %}
+      <li>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.text }}</p>
+        <p class="bubble bubble-bot"><strong>SokoSense:</strong> {{ f.example }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-lead">Designed for real daily market routines, not dashboards that sit unused.</p>
+    <ol class="steps">
+      {% for s in c.steps %}
+      <li><span class="step-num">{{ loop.index }}</span><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>
+      {% endfor %}
+    </ol>
+    <h3 class="sub-title">Speak in your own language</h3>
+    <ul class="languages">
+      {% for l in c.languages %}
+      <li><span class="lang-name"><span aria-hidden="true">{{ l.flag }}</span> {{ l.name }}</span><span class="lang-example">"{{ l.example }}"</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Pricing built for everyone</h2>
+    <p class="section-lead">No commitment. Cancel anytime.</p>
+    <ul class="pricing">
+      {% for p in c.pricing %}
+      <li class="{% if p.featured %}featured{% endif %}">
+        
+        <h3>{{ p.name }}</h3>
+        <p class="plan-price">{{ p.price }}</p>
+        <p class="plan-local">{{ p.local }}</p>
+        <p>{{ p.text }}</p>
+        <a class="btn {% if p.featured %}btn-gold{% else %}btn-outline{% endif %}" href="/contact">Get started</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="fine-print">Institutions: aggregated market-insight data products are available for mobile network operators, development banks and ecosystem partners. <a href="/contact">Contact us</a> to learn more.</p>
+  </div>
+</section>
+
+<section class="section section-mist">
+  <div class="container faq-wrap">
+    <h2 class="section-title">Common questions</h2>
+    <div class="faq">
+      {% for f in c.faq %}
+      <details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="next-page">
+  <div class="container"><a href="/awards"><span>Next</span>See our awards and recognition</a></div>
+</section>
+{% endblock %}

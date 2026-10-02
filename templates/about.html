@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block lead %}We help small businesses across Africa make decisions with data, using the phone they already have.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container problem-grid">
+    <div class="big-figure">
+      <span class="big-number">50%</span>
+      <span class="big-label">of SMEs in Rwanda and Cameroon close within five years</span>
+    </div>
+    <div>
+      <h2 class="section-title">{{ c.problem.title|capitalize }}</h2>
+      <p class="lead-text">{{ c.problem.summary }}</p>
+      <p>{{ c.problem.detail }}</p>
+      <p class="fine-print">Source: {{ c.problem.source }}.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-mist">
+  <div class="container">
+    <h2 class="section-title">Three problems we hear every day</h2>
+    <ul class="pains">
+      {% for p in c.problem.pains %}
+      <li>
+        <h3>{{ p.title|capitalize }}</h3>
+        <p>{{ p.text }}</p>
+        <blockquote>{{ p.quote }}</blockquote>
+        <p class="quote-role">{{ p.who }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <img class="split-img" src="{{ c.images.map }}" alt="Map of Africa">
+    <div>
+      <h2 class="section-title">Connecting small businesses across Africa</h2>
+      {% for p in c.markets.text %}<p>{{ p }}</p>{% endfor %}
+      <ul class="countries">
+        {% for m in c.markets.countries %}
+        <li><span class="flag" aria-hidden="true">{{ m.flag }}</span><span><strong>{{ m.name }}</strong><br>{{ m.stage }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-mist">
+  <div class="container">
+    <h2 class="section-title">Everyday business life in our markets</h2>
+    <p class="section-lead">The people and places behind small businesses in Rwanda and Cameroon.</p>
+    <ul class="gallery">
+      {% for g in c.gallery %}
+      <li><figure><img src="{{ g.src }}" alt="{{ g.caption }}" loading="lazy"><figcaption>{{ g.caption }}</figcaption></figure></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="next-page">
+  <div class="container"><a href="/solution"><span>Next</span>See how SokoSense works</a></div>
+</section>
+{% endblock %}

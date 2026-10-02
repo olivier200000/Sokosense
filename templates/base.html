@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page_title %}{{ page_title }} | {% endif %}{{ company.name }} - {{ company.tagline }}</title>
+  <meta name="description" content="{{ company.intro }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-mark.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Source+Sans+3:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/publications.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="nav-logo" href="/" aria-label="{{ company.name }} home">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="{{ company.name }}">
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span><span class="visually-hidden">Menu</span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        {% for url, label in nav %}
+        <li><a href="{{ url }}" {% if current_path == url %}class="active" aria-current="page"{% endif %}>{{ label }}</a></li>
+        {% endfor %}
+        <li><a class="nav-cta {% if current_path == '/contact' %}active{% endif %}" href="/contact" {% if current_path == '/contact' %}aria-current="page"{% endif %}>Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    {% if page_title %}
+    <section class="page-header">
+      <div class="container">
+        <h1>{{ page_title|upper }}</h1>
+        <p class="page-lead">{% block lead %}{% endblock %}</p>
+      </div>
+    </section>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-mark" src="{{ url_for('static', filename='img/logo-mark.png') }}" alt="">
+        <p class="footer-name">{{ company.name }}</p>
+        <p class="footer-tag">{{ company.tagline }}</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="footer-heading">Pages</p>
+        <div class="footer-links">
+          {% for url, label in nav if url != '/' %}<a href="{{ url }}">{{ label }}</a>{% endfor %}
+        </div>
+      </nav>
+      <div>
+        <p class="footer-heading">Connect</p>
+        <div class="footer-links">
+          <a href="/contact">Contact us</a>
+          <a href="{{ company.demo_url }}" target="_blank" rel="noopener">Live demo</a>
+          {% for s in company.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a>{% endfor %}
+          {% if company.email %}<a href="mailto:{{ company.email }}">Email us</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    <p class="container copyright">© {{ year }} {{ company.name }}. All rights reserved.</p>
+  </footer>
+
+  {% block extra %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

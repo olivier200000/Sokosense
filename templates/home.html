@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="hero-tagline">{{ company.tagline }}</p>
+      <h1>{{ company.headline }}</h1>
+      <p class="hero-intro">{{ company.intro }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="/contact">Get early access</a>
+        <a class="btn btn-ghost" href="/team">Meet the team</a>
+      </div>
+    </div>
+    <figure class="hero-visual">
+      <img class="hero-photo" src="{{ c.images.hero }}" alt="African market stall with goods and shoppers">
+      <figcaption class="hero-caption">{{ c.images.hero_caption }}</figcaption>
+      <div class="chat" aria-label="Example SokoSense conversation on WhatsApp">
+        <p class="chat-head"><img src="{{ url_for('static', filename='img/logo-mark.png') }}" alt=""> SokoSense AI on WhatsApp</p>
+        <ul class="chat-body" id="hero-chat">
+          {% for m in c.hero_chat %}<li class="bubble bubble-{{ m.from }}">{{ m.text }}</li>{% endfor %}
+        </ul>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="stats-band">
+  <ul class="container stats">
+    {% for s in c.opportunity %}
+    <li><span class="stat-value">{{ s.value }}</span><span class="stat-label">{{ s.label }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="section section-mist">
+  <div class="container">
+    <h2 class="section-title">What traders are saying</h2>
+    <ul class="quotes">
+      {% for t in c.testimonials %}
+      <li>
+        <blockquote>{{ t.quote }}</blockquote>
+        <p class="quote-name">{{ t.name }}</p>
+        <p class="quote-role">{{ t.role }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="fine-print">{{ c.testimonials_note }}</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <h2>See your business clearly, starting on WhatsApp.</h2>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="/contact">Get early access</a>
+      <a class="btn btn-ghost" href="{{ company.demo_url }}" target="_blank" rel="noopener">Try the live demo</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

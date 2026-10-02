@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block lead %}News{% endblock %}
+{% block content %}
+<article class="section">
+  <div class="container article">
+    <a class="back-link" href="{{ url_for('publications', tab='news') }}">‹ All news</a>
+    <time class="news-date" datetime="{{ item.published_on }}">{{ item.published_on|nice_date }}</time>
+    <h2 class="article-title">{{ item.title }}</h2>
+    <p class="article-summary">{{ item.summary }}</p>
+    {% if item.image %}<img class="article-img" src="{{ url_for('news_image', filename=item.image) }}" alt="">{% endif %}
+    {% if item.body %}
+    <div class="article-body">
+      {% for p in item.body|paragraphs %}<p>{{ p }}</p>{% endfor %}
+    </div>
+    {% endif %}
+    {% if item.pdf %}
+      {% set pdf_url = url_for('news_pdf', news_id=item.id) %}
+      {% set pdf_size = item.pdf_size %}
+      {% set pdf_label = "Full article" %}
+      {% include "_pdf_options.html" %}
+    {% endif %}
+  </div>
+</article>
+{% endblock %}

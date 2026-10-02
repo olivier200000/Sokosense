@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block lead %}Five co-founders building SokoSense from lived experience in real markets. Select a person to read more.{% endblock %}
+{% block content %}
+<section class="section section-mist">
+  <div class="container">
+    <ul class="team" id="team-list"><li class="state-msg">Loading the team…</li></ul>
+  </div>
+</section>
+<section class="section">
+  <div class="container split">
+    <img class="split-img" src="{{ c.images.field }}" alt="Founder in a Kigali shop explaining how SokoSense works on WhatsApp">
+    <div>
+      <h2 class="section-title">In the field</h2>
+      <p class="lead-text">Explaining SokoSense inside a Kigali shop.</p>
+      <p>Captured during a field session in Kigali, this moment shows SokoSense being introduced in-store through WhatsApp. This is how we build: next to the traders who use it.</p>
+      <a class="btn btn-navy" href="/contact">Work with us</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra %}
+<dialog class="member-dialog" id="member-dialog" aria-labelledby="dialog-name">
+  <div class="member-dialog-body" id="member-dialog-body"></div>
+  <button class="dialog-close" id="dialog-close">Close</button>
+</dialog>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block lead %}Milestones that tell us we are on the right track.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <ol class="awards" id="awards-list"><li class="state-msg">Loading awards…</li></ol>
+  </div>
+</section>
+<section class="section section-mist">
+  <div class="container">
+    <h2 class="section-title">Live, validated and ready to scale</h2>
+    <ul class="milestones">
+      {% for m in c.milestones %}<li>{{ m }}</li>{% endfor %}
+    </ul>
+    <a class="btn btn-navy" href="{{ company.demo_url }}" target="_blank" rel="noopener">View the MVP demo</a>
+  </div>
+</section>
+<section class="next-page">
+  <div class="container"><a href="/events"><span>Next</span>See the events we attended</a></div>
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block lead %}News about SokoSense and our yearly reports.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <nav class="pub-tabs" aria-label="Publication type">
+      <a href="{{ url_for('publications', tab='news') }}" {% if tab == 'news' %}class="active" aria-current="page"{% endif %}>News <span>{{ news|length }}</span></a>
+      <a href="{{ url_for('publications', tab='reports') }}" {% if tab == 'reports' %}class="active" aria-current="page"{% endif %}>Annual reports <span>{{ reports|length }}</span></a>
+    </nav>
+
+    {% if tab == 'news' %}
+      {% if news %}
+      <ul class="news-grid">
+        {% for n in news %}
+        <li class="news-card">
+          <a href="{{ url_for('news_article', news_id=n.id) }}">
+            {% if n.image %}
+              <img class="news-img" src="{{ url_for('news_image', filename=n.image) }}" alt="" loading="lazy">
+            {% else %}
+              <span class="news-img news-img-empty" aria-hidden="true"><img src="{{ url_for('static', filename='img/logo-mark.png') }}" alt=""></span>
+            {% endif %}
+            <time class="news-date" datetime="{{ n.published_on }}">{{ n.published_on|nice_date }}</time>{% if n.pdf %}<span class="pdf-tag">PDF</span>{% endif %}
+            <h2 class="news-title">{{ n.title }}</h2>
+            <p class="news-summary">{{ n.summary }}</p>
+            <span class="news-more">Read more</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="pub-empty">No news has been published yet. Check back soon.</p>
+      {% endif %}
+
+    {% else %}
+      {% if reports %}
+      <ul class="report-list">
+        {% for r in reports %}
+        <li class="report">
+          <span class="report-year">{{ r.year }}</span>
+          <div class="report-info">
+            <h2>{{ r.title }}</h2>
+            {% if r.description %}<p>{{ r.description }}</p>{% endif %}
+            <p class="report-meta">PDF, {{ r.file_size|file_size }}</p>
+          </div>
+          <div class="report-actions">
+            <a class="btn btn-navy" href="{{ url_for('report_view', report_id=r.id) }}">Read report</a>
+            <a class="report-download" href="{{ url_for('report_download', report_id=r.id) }}?download=1" download>Download</a>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="pub-empty">No reports have been published yet. Check back soon.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

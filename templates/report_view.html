@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block lead %}Annual report{% endblock %}
+{% block content %}
+<article class="section">
+  <div class="container article article-wide">
+    <a class="back-link" href="{{ url_for('publications', tab='reports') }}">‹ All reports</a>
+    <span class="news-date">{{ item.year }}</span>
+    <h2 class="article-title">{{ item.title }}</h2>
+    {% if item.description %}<p class="article-summary">{{ item.description }}</p>{% endif %}
+    {% set pdf_url = url_for('report_download', report_id=item.id) %}
+    {% set pdf_size = item.file_size %}
+    {% set pdf_label = item.title %}
+    {% include "_pdf_options.html" %}
+  </div>
+</article>
+{% endblock %}

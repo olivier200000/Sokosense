@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block lead %}Competitions, pilots and field sessions where we shared our work and learned from traders.{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="filters" id="event-filters" role="group" aria-label="Filter events by year"></div>
+    <ul class="events" id="events-list"><li class="state-msg">Loading events…</li></ul>
+  </div>
+</section>
+<section class="next-page">
+  <div class="container"><a href="/team"><span>Next</span>Meet the team</a></div>
+</section>
+{% endblock %}

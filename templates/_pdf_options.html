@@ -1,0 +1,32 @@
+{# Three ways to read a PDF: on this page, in a new tab, or download.
+   Needs: pdf_url, pdf_size, pdf_label #}
+<div class="pdf-box">
+  <div class="pdf-bar">
+    <span class="pdf-label">{{ pdf_label }} <span class="pdf-size">PDF, {{ pdf_size|file_size }}</span></span>
+    <div class="pdf-actions">
+      <button type="button" class="btn btn-navy pdf-read" aria-expanded="false" aria-controls="pdf-viewer">Read on this page</button>
+      <a class="btn btn-outline" href="{{ pdf_url }}" target="_blank" rel="noopener">Open in new tab</a>
+      <a class="btn btn-outline" href="{{ pdf_url }}?download=1" download>Download</a>
+    </div>
+  </div>
+  <div class="pdf-viewer-wrap" id="pdf-viewer" hidden>
+    <iframe class="pdf-viewer" data-src="{{ pdf_url }}" title="{{ pdf_label }}"></iframe>
+    <p class="pdf-help">Document not showing? Use <a href="{{ pdf_url }}" target="_blank" rel="noopener">Open in new tab</a> or <a href="{{ pdf_url }}?download=1" download>Download</a>.</p>
+  </div>
+</div>
+<script>
+  // "Read on this page" shows or hides the document. It only loads when first opened.
+  (function () {
+    const btn = document.querySelector(".pdf-read");
+    const wrap = document.getElementById("pdf-viewer");
+    const frame = wrap.querySelector("iframe");
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      if (!open && !frame.src) frame.src = frame.dataset.src;
+      wrap.hidden = open;
+      btn.setAttribute("aria-expanded", String(!open));
+      btn.textContent = open ? "Read on this page" : "Close document";
+      if (!open) wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  })();
+</script>
